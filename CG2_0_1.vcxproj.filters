@@ -54,7 +54,6 @@
     <ClCompile Include="Project\SkyBox\Skydome.cpp" />
     <ClCompile Include="Project\GameScene\ClearScene.cpp" />
     <ClCompile Include="Project\GameObject\Stage\Stage.cpp" />
-    <ClCompile Include="Project\GameObject\Player\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\3d\Animation.h" />
@@ -94,7 +93,6 @@
     <ClInclude Include="Project\SkyBox\Skydome.h" />
     <ClInclude Include="Project\GameScene\ClearScene.h" />
     <ClInclude Include="Project\GameObject\Stage\Stage.h" />
-    <ClInclude Include="Project\GameObject\Player\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\Shaders\Fullscreen.hlsli" />
