@@ -21,7 +21,7 @@ void GameManager::Run()
 	CoInitializeEx(0, COINIT_MULTITHREADED);
 
 	winapp = WinApp::GetInsTance();
-	winapp->Initialize(L"Gekitui");
+	winapp->Initialize(L"10days");
 
 	directX = DirectXCommon::GetInsTance();
 	directX->Initialize();
