@@ -23,6 +23,7 @@
 #include <Skydome.h>
 #include <Stage/Stage.h>
 #include <Player/Player.h>
+#include <Enemy/Enemy.h>
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -45,6 +46,21 @@ public:
 	// 解放
 	void Release();
 
+	void CheckAllCollisions();
+
+	/// <summary>
+	/// 敵発生データの読み込み
+	/// </summary>
+	void LoadEnemyPopData();
+
+	/// <summary>
+	/// 敵発生コマンドの更新
+	/// </summary>
+	void UpdateEnemyPopCommands();
+
+	void EnemySpown(Vector3 pos);
+	void AddEnemy(Enemy* enemy);
+
 private:
 	Camera camera_;
 	TextureManager* textureManager_ = TextureManager::GetInstance();
@@ -52,5 +68,17 @@ private:
 
 	// プレイヤー
 	std::unique_ptr<Player> player_;
+
+	// 敵
+	std::list<Enemy*> enemys_;
+
+	std::unique_ptr<Stage> stage_;
 private:
+	// 待機タイマー
+	int32_t waitTimer_;
+	// 待機フラグ
+	bool isWait_;
+
+	// 敵発生コマンド
+	std::stringstream enemyPopCommands;
 };

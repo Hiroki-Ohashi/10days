@@ -17,7 +17,7 @@ void ClearScene::Update()
 {
 	camera_.Update();
 
-	if (input_->PushKey(DIK_SPACE)) {
+	if (input_->TriggerKey(DIK_RETURN)) {
 		sceneNo = TITLE;
 	}
 	

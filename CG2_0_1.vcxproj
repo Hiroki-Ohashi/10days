@@ -59,7 +59,7 @@
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\2d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\3d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Base;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Input;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Manager;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameScene;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\utillity;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\resources;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\DirectXTex;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\imgui;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameObject\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameManager;$(ProjectDir)externals\assimp\include;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\PostProcess;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\2d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\3d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Base;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Input;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Manager;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameScene;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\utillity;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\resources;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\DirectXTex;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\imgui;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameObject\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameManager;$(ProjectDir)externals\assimp\include;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\PostProcess;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Light;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\SkyBox;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\json</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ohashi\source\repos\10days\Engine\2d;C:\Users\Ohashi\source\repos\10days\Engine\3d;C:\Users\Ohashi\source\repos\10days\Engine\Base;C:\Users\Ohashi\source\repos\10days\Engine\Input;C:\Users\Ohashi\source\repos\10days\Engine\Manager;C:\Users\Ohashi\source\repos\10days\Project\GameScene;C:\Users\Ohashi\source\repos\10days\Project\utillity;C:\Users\Ohashi\source\repos\10days\resources;C:\Users\Ohashi\source\repos\10days\externals\DirectXTex;C:\Users\Ohashi\source\repos\10days\externals\imgui;C:\Users\Ohashi\source\repos\10days\Project\;C:\Users\Ohashi\source\repos\10days\Project\GameObject\;C:\Users\Ohashi\source\repos\10days\Project\GameManager;$(ProjectDir)externals\assimp\include;C:\Users\Ohashi\source\repos\10days\Engine\PostProcess;C:\Users\Ohashi\source\repos\10days\Engine\Light;C:\Users\Ohashi\source\repos\10days\Project\SkyBox;C:\Users\Ohashi\source\repos\10days\externals\json</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -87,7 +87,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <TreatWarningAsError>true</TreatWarningAsError>
       <AdditionalIncludeDirectories>C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\2d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\3d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Base;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Input;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Manager;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameScene;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\utillity;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\resources;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\DirectXTex;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\imgui;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameObject\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameManager;$(ProjectDir)externals\assimp\include;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\PostProcess;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\2d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\3d;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Base;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Input;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Manager;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameScene;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\utillity;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\resources;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\DirectXTex;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\imgui;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameObject\;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\GameManager;$(ProjectDir)externals\assimp\include;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\PostProcess;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Engine\Light;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\Project\SkyBox;C:\Users\Ohashi\source\repos\CG2\CG2_0_1\externals\json</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Ohashi\source\repos\10days\Engine\2d;C:\Users\Ohashi\source\repos\10days\Engine\3d;C:\Users\Ohashi\source\repos\10days\Engine\Base;C:\Users\Ohashi\source\repos\10days\Engine\Input;C:\Users\Ohashi\source\repos\10days\Engine\Manager;C:\Users\Ohashi\source\repos\10days\Project\GameScene;C:\Users\Ohashi\source\repos\10days\Project\utillity;C:\Users\Ohashi\source\repos\10days\resources;C:\Users\Ohashi\source\repos\10days\externals\DirectXTex;C:\Users\Ohashi\source\repos\10days\externals\imgui;C:\Users\Ohashi\source\repos\10days\Project\;C:\Users\Ohashi\source\repos\10days\Project\GameObject\;C:\Users\Ohashi\source\repos\10days\Project\GameManager;$(ProjectDir)externals\assimp\include;C:\Users\Ohashi\source\repos\10days\Engine\PostProcess;C:\Users\Ohashi\source\repos\10days\Engine\Light;C:\Users\Ohashi\source\repos\10days\Project\SkyBox;C:\Users\Ohashi\source\repos\10days\externals\json</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -105,7 +105,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Project\GameObject\Enemy\Enemy.cpp" />
     <ClCompile Include="Engine\Manager\Json.cpp" />
+    <ClCompile Include="Project\GameObject\Player\PlayerBullet.cpp" />
     <ClCompile Include="Project\GameScene\ClearScene.cpp" />
     <ClCompile Include="Engine\3d\Animation.cpp" />
     <ClCompile Include="Engine\3d\Particle.cpp" />
@@ -143,11 +145,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Project\GameObject\Stage\Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Project\GameObject\Enemy\Enemy.h" />
     <ClInclude Include="Engine\Manager\Json.h" />
     <ClInclude Include="externals\json\json.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Project\GameObject\Player\PlayerBullet.h" />
     <ClInclude Include="Project\GameScene\ClearScene.h" />
     <ClInclude Include="Engine\3d\Animation.h" />
     <ClInclude Include="Engine\3d\Particle.h" />

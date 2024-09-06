@@ -2,7 +2,7 @@
 
 void Stage::Initialize()
 {
-	transform_ = { {10000.0f,1.0f,10000.0f},{0.0f,0.0f,0.0f},{0.0f,0.0f,0.0f} };
+	transform_ = { {500.0f,1.0f,500.0f},{0.0f,0.0f,0.0f},{0.0f,-12.0f,0.0f} };
 
 	model_ = std::make_unique<Model>();
 	model_->Initialize("cube.obj", transform_);
@@ -18,6 +18,7 @@ void Stage::Initialize()
 void Stage::Update()
 {
 	model_->SetWorldTransform(worldtransform_);
+	worldtransform_.UpdateMatrix();
 
 	if (ImGui::TreeNode("Stage")) {
 		ImGui::DragFloat3("Scale", &worldtransform_.scale.x, 0.1f);

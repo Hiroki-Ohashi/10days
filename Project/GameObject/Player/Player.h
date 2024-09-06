@@ -2,6 +2,7 @@
 #include <TextureManager.h>
 #include <Model.h>
 #include <Input.h>
+#include "PlayerBullet.h"
 
 class Player {
 public:
@@ -12,12 +13,17 @@ public:
 	void Draw(Camera* camera_);
 
 	void OnCollision() {}
+
+	// 弾リストを取得
+	const std::list<PlayerBullet*>& GetBullets() const { return bullets_; }
 	
 private:
-	
+	void Attack();
 private:
 	TextureManager* textureManager_ = TextureManager::GetInstance();
 	Input* input_ = Input::GetInsTance();
+
+	std::list<PlayerBullet*> bullets_;
 
 	WorldTransform worldtransform_;
 	EulerTransform transform_;
