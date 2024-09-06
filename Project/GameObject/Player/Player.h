@@ -10,6 +10,8 @@ public:
 	void Initialize();
 	void Update();
 	void Draw(Camera* camera_);
+
+	void OnCollision() {}
 	
 private:
 	
@@ -20,4 +22,6 @@ private:
 	WorldTransform worldtransform_;
 	EulerTransform transform_;
 	std::unique_ptr<Model> model_;
+
+	uint32_t playerTex;
 };

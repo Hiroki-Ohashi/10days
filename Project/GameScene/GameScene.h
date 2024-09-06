@@ -22,6 +22,7 @@
 #include "SkyBox.h"
 #include <Skydome.h>
 #include <Stage/Stage.h>
+#include <Player/Player.h>
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -48,5 +49,8 @@ private:
 	Camera camera_;
 	TextureManager* textureManager_ = TextureManager::GetInstance();
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
+
+	// プレイヤー
+	std::unique_ptr<Player> player_;
 private:
 };

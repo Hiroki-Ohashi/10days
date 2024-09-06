@@ -7,4 +7,4 @@ int IScene::GetSceneNo()
 	return sceneNo;
 }
 
-int IScene::sceneNo = TITLE;
+int IScene::sceneNo = STAGE;
