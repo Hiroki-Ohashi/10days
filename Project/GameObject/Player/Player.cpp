@@ -88,6 +88,8 @@ void Player::Attack()
 		// 弾を生成し、初期化
 		PlayerBullet* newBullet = new PlayerBullet();
 		newBullet->Initialize(worldtransform_.translate, velocity);
+		//弾の種類の確定
+		newBullet->SetType(RED);
 
 		// 弾を登録
 		bullets_.push_back(newBullet);

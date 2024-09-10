@@ -12,6 +12,12 @@ public:
 
 	bool IsDead() const { return isDead_; }
 	Vector3 GetPos() { return worldtransform_.translate; }
+
+	//プレイヤー弾の種類
+	void SetType(TYPE type) { type_ = type; }
+	TYPE GetTYPE() { return type_; }
+
+
 private:
 	std::unique_ptr<Model> model_;
 	EulerTransform transform;
@@ -21,6 +27,9 @@ private:
 	static const int32_t kLifeTime = 60 * 5;
 	int32_t deathTimer_ = kLifeTime;
 	bool isDead_ = false;
+
+	//種類
+	TYPE type_;
 
 	// 速度
 	Vector3 velo;
