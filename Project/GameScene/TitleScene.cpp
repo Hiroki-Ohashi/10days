@@ -22,15 +22,8 @@ void TitleScene::Initialize()
 	skydome_ = std::make_unique<Skydome>();
 	skydome_->Initialize();
 
-	titleModel_ = std::make_unique<Model>();
-	titleModel_->Initialize("board.obj", titleTransform);
-
-	titleWorldtransform.translate = titleTransform.translate;
-	titleWorldtransform.rotate = titleTransform.rotate;
-	titleWorldtransform.scale = titleTransform.scale;
-	titleWorldtransform.UpdateMatrix();
-
-	titleTexture = textureManager_->Load("resources/title.png");
+	titleObject_ = std::make_unique<TitleObject>();
+	titleObject_->Initialize();
 }
 
 
@@ -39,8 +32,8 @@ void TitleScene::Update()
 	camera_.Update();
 
 	player_->Update();
-	
-	titleModel_->SetWorldTransform(titleWorldtransform);
+
+	titleObject_->Update();
 
 	if (input_->TriggerKey(DIK_RETURN)) {
 		sceneNo = STAGE;
@@ -53,7 +46,7 @@ void TitleScene::Draw()
 
 	stage_->Draw(&camera_);
 
-	titleModel_->Draw(&camera_, titleTexture);
+	titleObject_->Draw(&camera_);
 
 	player_->Draw(&camera_);
 }
