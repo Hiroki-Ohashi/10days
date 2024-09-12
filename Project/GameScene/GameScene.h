@@ -23,7 +23,9 @@
 #include <Skydome.h>
 #include <Stage/Stage.h>
 #include <Player/Player.h>
-#include <Enemy/EnemyManager.h>
+#include <Enemy/Enemy.h>
+
+
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")

@@ -1,6 +1,6 @@
-#include "EnemyManager.h"
+#include "Enemy.h"
 
-void EnemyManager::Initialize(Vector3 pos)
+void Enemy::Initialize(Vector3 pos)
 {
 	transform_ = { {1.0f,1.0f,1.0f},{0.0f,0.0f,0.0f},{pos.x,pos.y,pos.z} };
 
@@ -17,9 +17,13 @@ void EnemyManager::Initialize(Vector3 pos)
 	enemyTex = textureManager_->Load("resources/black.png");
 }
 
-void EnemyManager::Update()
+void Enemy::Update()
 {
+
+	///敵の移動処理
 	worldtransform_.translate.y -= 0.1f;
+
+
 	model_->SetWorldTransform(worldtransform_);
 	worldtransform_.UpdateMatrix();
 
@@ -31,7 +35,7 @@ void EnemyManager::Update()
 	//}
 }
 
-void EnemyManager::Draw(Camera* camera)
+void Enemy::Draw(Camera* camera)
 {
 	if (isDead_ == false) {
 		model_->Draw(camera, enemyTex);

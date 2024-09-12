@@ -9,7 +9,7 @@
 #include <time.h>
 
 
-class EnemyManager {
+class Enemy {
 public:
 	void Initialize(Vector3 pos);
 	void Update();

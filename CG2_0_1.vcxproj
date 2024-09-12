@@ -107,7 +107,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
   <ItemGroup>
     <ClCompile Include="Project\GameObject\Enemy\Enemy.cpp" />
     <ClCompile Include="Engine\Manager\Json.cpp" />
-    <ClCompile Include="Project\GameObject\Enemy\EnemyManager.cpp" />
+    <ClCompile Include="Project\GameObject\Enemy\Enemy.cpp" />
     <ClCompile Include="Project\GameObject\Player\PlayerBullet.cpp" />
     <ClCompile Include="Project\GameScene\ClearScene.cpp" />
     <ClCompile Include="Engine\3d\Animation.cpp" />
@@ -152,7 +152,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Project\GameObject\Enemy\EnemyManager.h" />
+    <ClInclude Include="Project\GameObject\Enemy\Enemy.h" />
     <ClInclude Include="Project\GameObject\Player\PlayerBullet.h" />
     <ClInclude Include="Project\GameScene\ClearScene.h" />
     <ClInclude Include="Engine\3d\Animation.h" />
