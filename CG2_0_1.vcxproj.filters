@@ -99,6 +99,7 @@
     <None Include="resources\Shaders\Particle.hlsli" />
     <None Include="resources\Shaders\Object3d.hlsli" />
     <None Include="resources\Shaders\Skybox.hlsli" />
+    <None Include="externals\assimp\lib\Debug\assimp-vc143-mtd.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="externals\imgui\LICENSE.txt" />
