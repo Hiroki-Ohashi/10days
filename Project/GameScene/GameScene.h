@@ -59,7 +59,7 @@ public:
 	void UpdateEnemyPopCommands();
 
 	void EnemySpown(Vector3 pos);
-	void AddEnemy(Enemy* enemy);
+	void AddEnemy(std::unique_ptr<Enemy> enemy);
 
 private:
 	Camera camera_;
@@ -70,9 +70,12 @@ private:
 	std::unique_ptr<Player> player_;
 
 	// 敵
-	std::list<Enemy*> enemys_;
+	std::list<std::unique_ptr<Enemy>> enemys_;
 
 	std::unique_ptr<Stage> stage_;
+
+	std::unique_ptr<Skydome> skydome_;
+
 private:
 	// 待機タイマー
 	int32_t waitTimer_;

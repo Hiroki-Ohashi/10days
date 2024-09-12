@@ -1,9 +1,6 @@
 #include "GameScene.h"
 
 GameScene::~GameScene(){
-	for (Enemy* enemy : enemys_) {
-		delete enemy;
-	}
 }
 
 void GameScene::Initialize() {
@@ -20,7 +17,10 @@ void GameScene::Initialize() {
 	stage_ = std::make_unique<Stage>();
 	stage_->Initialize();
 
-	for (Enemy* enemy : enemys_) {
+	skydome_ = std::make_unique<Skydome>();
+	skydome_->Initialize();
+
+	for (std::unique_ptr<Enemy>& enemy : enemys_) {
 		enemy->SetIsDead(false);
 	}
 
@@ -37,11 +37,12 @@ void GameScene::Update(){
 
 	stage_->Update();
 
-	for (Enemy* enemy : enemys_) {
+	for (std::unique_ptr<Enemy>& enemy : enemys_) {
 		enemy->Update();
+		if (enemy->IsDead() == false) {
+			CheckAllCollisions();
+		}
 	}
-
-	CheckAllCollisions();
 
 	if (input_->TriggerKey(DIK_RETURN)) {
 		sceneNo = CLEAR;
@@ -50,10 +51,11 @@ void GameScene::Update(){
 
 void GameScene::Draw()
 {
+	skydome_->Draw(&camera_);
 	stage_->Draw(&camera_);
 
 	// 敵キャラの描画
-	for (Enemy* enemy : enemys_) {
+	for (std::unique_ptr<Enemy>& enemy : enemys_) {
 		enemy->Draw(&camera_);
 	}
 
@@ -80,7 +82,7 @@ void GameScene::CheckAllCollisions()
 #pragma region 自弾と敵キャラの当たり判定
 	// 敵キャラと自弾すべての当たり判定
 	for (PlayerBullet* bullet : playerBullets) {
-		for (Enemy* enemy : enemys_) {
+		for (std::unique_ptr<Enemy>& enemy : enemys_) {
 
 			// 敵キャラの座標
 			posA = enemy->GetPos();
@@ -189,14 +191,14 @@ void GameScene::UpdateEnemyPopCommands()
 void GameScene::EnemySpown(Vector3 pos)
 {
 	// 敵キャラの生成
-	Enemy* enemy_ = new Enemy();
+	std::unique_ptr<Enemy> enemy_ = std::make_unique<Enemy>();
 	// 敵キャラの初期化
 	enemy_->Initialize(pos);
-	AddEnemy(enemy_);
+	AddEnemy(std::move(enemy_));
 }
 
-void GameScene::AddEnemy(Enemy* enemy)
+void GameScene::AddEnemy(std::unique_ptr<Enemy> enemy)
 {
 	// リストに登録する
-	enemys_.push_back(enemy);
+	enemys_.push_back(std::move(enemy));
 }

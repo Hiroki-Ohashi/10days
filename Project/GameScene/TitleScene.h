@@ -20,6 +20,8 @@
 #include "PostProcess.h"
 #include <Json.h>
 #include <Skydome.h>
+#include <Player/Player.h>
+#include <Stage/Stage.h>
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -42,5 +44,17 @@ private:
 	TextureManager* textureManager_ = TextureManager::GetInstance();
 
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
+
+	// プレイヤー
+	std::unique_ptr<Player> player_;
+
+	std::unique_ptr<Stage> stage_;
+	std::unique_ptr<Skydome> skydome_;
+
+	std::unique_ptr<Model> titleModel_;
 private:
+	EulerTransform titleTransform = { {10.0f,10.0f,10.0f},{0.0f,0.0f,0.0f},{0.0f,0.0f,15.0f} };
+	WorldTransform titleWorldtransform;
+
+	uint32_t titleTexture;
 };
