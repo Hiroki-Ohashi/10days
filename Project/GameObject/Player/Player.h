@@ -16,7 +16,7 @@ public:
 
 	// 弾リストを取得
 	const std::list<PlayerBullet*>& GetBullets() const { return bullets_; }
-	
+
 private:
 	void Attack();
 private:
@@ -30,4 +30,10 @@ private:
 	std::unique_ptr<Model> model_;
 
 	uint32_t playerTex;
+
+	uint32_t playerbulletTex;
+
+
+	//種類
+	int type_;
 };
