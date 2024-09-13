@@ -39,6 +39,7 @@ void GameManager::Run()
 	sceneArr_[TITLE] = std::make_unique<TitleScene>();
 	sceneArr_[STAGE] = std::make_unique<GameScene>();
 	sceneArr_[CLEAR] = std::make_unique<ClearScene>();
+	sceneArr_[GAMEOVER] = std::make_unique<GameOverScene>();
 
 	currentSceneNo_ = TITLE;
 

@@ -58,6 +58,7 @@
     <ClCompile Include="Project\GameObject\Player\PlayerBullet.cpp" />
     <ClCompile Include="Project\GameObject\Enemy\Enemy.cpp" />
     <ClCompile Include="titleObject.cpp" />
+    <ClCompile Include="Project\GameScene\GameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\3d\Animation.h" />
@@ -101,6 +102,7 @@
     <ClInclude Include="Project\GameObject\Player\PlayerBullet.h" />
     <ClInclude Include="Project\GameObject\Enemy\Enemy.h" />
     <ClInclude Include="titleObject.h" />
+    <ClInclude Include="Project\GameScene\GameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\Shaders\Fullscreen.hlsli" />

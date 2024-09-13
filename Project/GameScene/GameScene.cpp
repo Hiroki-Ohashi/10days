@@ -45,6 +45,10 @@ void GameScene::Update() {
 			ImGui::Text("Type : %d", enemy->GetTYPE(), 1);
 			ImGui::TreePop();
 		}
+
+		if (enemy->GetPos().y <= -10.0f) {
+			sceneNo = GAMEOVER;
+		}
 	}
 
 	CheckAllCollisions();
