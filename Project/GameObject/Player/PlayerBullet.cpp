@@ -22,7 +22,7 @@ void PlayerBullet::Initialize(Vector3 pos, Vector3 velocity)
 		playerbulletTex = textureManager_->Load("resources/YELLOW.png");
 	}
 
-	if (type_ == BULL) {
+	if (type_ == BLUE) {
 		playerbulletTex = textureManager_->Load("resources/BULL.png");
 	}
 }

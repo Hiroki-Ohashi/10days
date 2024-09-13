@@ -86,6 +86,8 @@ private:
 	// 敵発生コマンド
 	std::stringstream enemyPopCommands;
 
+	int ClearCount = 0;
+
 	//種類
 	TYPE type_;
 };

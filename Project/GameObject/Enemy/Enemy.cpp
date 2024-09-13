@@ -23,7 +23,7 @@ void Enemy::Initialize(Vector3 pos)
 		enemyTex = textureManager_->Load("resources/YELLOW.png");
 	}
 
-	if (type_ == BULL) {
+	if (type_ == BLUE) {
 		enemyTex = textureManager_->Load("resources/BULL.png");
 	}
 
