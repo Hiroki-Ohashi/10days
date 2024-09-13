@@ -24,6 +24,7 @@ void GameScene::Initialize() {
 		enemy->SetIsDead(false);
 	}
 
+	Count = 0;
 }
 
 void GameScene::Update() {
@@ -57,6 +58,13 @@ void GameScene::Draw()
 	}
 
 	player_->Draw(&camera_);
+
+
+	if (ImGui::TreeNode("Count")) {
+		ImGui::DragInt("Type", &Count, 1);
+		ImGui::TreePop();
+	}
+
 }
 
 
@@ -99,11 +107,12 @@ void GameScene::CheckAllCollisions()
 			if (e2pBX + e2pBY + e2pBZ <= L && enemy->GetTYPE() == bullet->GetTYPE()) {
 				// 敵キャラの衝突時コールバックを呼び出す
 				enemy->OnCollision();
+				// 自弾の衝突時コールバックを呼び出す
+				bullet->OnCollision();
+				Count += 1;
 			}
 
 			if (e2pBX + e2pBY + e2pBZ <= L) {
-				// 自弾の衝突時コールバックを呼び出す
-				bullet->OnCollision();
 			}
 		}
 	}
