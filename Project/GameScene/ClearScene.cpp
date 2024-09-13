@@ -28,6 +28,9 @@ void ClearScene::Initialize()
 	titleWorldtransform.UpdateMatrix();
 
 	titleTexture = textureManager_->Load("resources/clearLog.png");
+
+	sceneBGM = audio_->SoundLoadWave("resources/opening-reggae.wav");
+	audio_->SoundPlayLoop(sceneBGM);
 }
 
 void ClearScene::Update()
@@ -47,6 +50,7 @@ void ClearScene::Update()
 	titleModel_->SetWorldTransform(titleWorldtransform);
 
 	if (input_->TriggerKey(DIK_A)) {
+		audio_->SoundPlayStop(sceneBGM);
 		sceneNo = TITLE;
 	}
 	
@@ -55,6 +59,7 @@ void ClearScene::Update()
 	if (Input::GetInsTance()->GetJoystickState(joyState)) {
 
 		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_A)) {
+			audio_->SoundPlayStop(sceneBGM);
 			sceneNo = STAGE;
 		}
 

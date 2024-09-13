@@ -23,10 +23,12 @@ void GameScene::Initialize() {
 	skydome_ = std::make_unique<Skydome>();
 	skydome_->Initialize();
 
+	sceneBGM = audio_->SoundLoadWave("resources/chasing.wav");
+	audio_->SoundPlayLoop(sceneBGM);
+
 	for (Enemy* enemy : enemys_) {
 		enemy->SetIsDead(true);
 	}
-
 	ClearCount = 0;
 	Interval = 0;
 }
@@ -50,11 +52,22 @@ void GameScene::Update() {
 			ImGui::TreePop();
 		}
 
-		if (enemy->IsDead() == false && enemy->GetPos().y <= -10.0f) {
+		if (enemy->GetPos().y <= -10.0f) {
+			audio_->SoundPlayStop(sceneBGM);
 			sceneNo = GAMEOVER;
 			enemy->SetIsDead(true);
 		}
 	}
+
+	//デスフラグの立った弾を削除
+	enemys_.remove_if([](Enemy* enemy) {
+		if (enemy->IsDead()) {
+			delete enemy;
+			return true;
+		}
+		return false;
+		});
+
 
 	CheckAllCollisions();
 
@@ -63,6 +76,7 @@ void GameScene::Update() {
 		for (Enemy* enemy : enemys_) {
 			enemy->SetIsDead(true);
 		}
+		audio_->SoundPlayStop(sceneBGM);
 		sceneNo = CLEAR;
 	}
 
@@ -70,6 +84,7 @@ void GameScene::Update() {
 		for (Enemy* enemy : enemys_) {
 			enemy->SetIsDead(true);
 		}
+		audio_->SoundPlayStop(sceneBGM);
 		sceneNo = CLEAR;
 	}
 }

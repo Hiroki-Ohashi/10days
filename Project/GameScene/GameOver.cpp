@@ -38,6 +38,10 @@ void GameOverScene::Initialize()
 
 	titleTexture = textureManager_->Load("resources/gameOver.png");
 	titleTexture1 = textureManager_->Load("resources/gameOverLog.png");
+
+	sceneBGM = audio_->SoundLoadWave("resources/rpg_village.wav");
+	audio_->SoundPlayLoop(sceneBGM);
+
 }
 
 void GameOverScene::Update()
@@ -62,6 +66,7 @@ void GameOverScene::Update()
 	titleModel_2->SetWorldTransform(titleWorldtransform2);
 
 	if (input_->TriggerKey(DIK_A)) {
+		audio_->SoundPlayStop(sceneBGM);
 		sceneNo = TITLE;
 	}
 
@@ -70,6 +75,7 @@ void GameOverScene::Update()
 	if (Input::GetInsTance()->GetJoystickState(joyState)) {
 
 		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_A)) {
+			audio_->SoundPlayStop(sceneBGM);
 			sceneNo = TITLE;
 		}
 

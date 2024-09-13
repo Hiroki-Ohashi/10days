@@ -24,6 +24,7 @@
 #include <Stage/Stage.h>
 #include <Player/Player.h>
 #include <Enemy/Enemy.h>
+#include "../../Engine/Audio/audio.h"
 
 
 
@@ -67,6 +68,7 @@ private:
 	Camera camera_;
 	TextureManager* textureManager_ = TextureManager::GetInstance();
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
+	Audio* audio_ = Audio::GetInstance();
 
 	// プレイヤー
 	std::unique_ptr<Player> player_;
@@ -92,4 +94,7 @@ private:
 
 	//種類
 	TYPE type_;
+
+	uint32_t sceneBGM = 0;
+
 };

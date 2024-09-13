@@ -7,6 +7,8 @@
 #include <Skydome.h>
 #include <Json.h>
 #include <Stage/Stage.h>
+#include "../../Engine/Audio/audio.h"
+
 
 class GameOverScene : public IScene {
 public:
@@ -20,6 +22,7 @@ public:
 private:
 	Camera camera_;
 	TextureManager* textureManager_ = TextureManager::GetInstance();
+	Audio* audio_ = Audio::GetInstance();
 
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
 
@@ -38,4 +41,6 @@ private:
 	uint32_t titleTexture1;
 
 	float speed = 0.05f;
+	uint32_t sceneBGM = 0;
+
 };

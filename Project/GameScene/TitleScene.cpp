@@ -26,7 +26,7 @@ void TitleScene::Initialize()
 	titleObject_ = std::make_unique<TitleObject>();
 	titleObject_->Initialize();
 
-	sceneBGM = audio_->SoundLoadWave("resources/bgm.wav");
+	sceneBGM = audio_->SoundLoadWave("resources/summermemories.wav");
 	audio_->SoundPlayLoop(sceneBGM);
 }
 
@@ -40,6 +40,8 @@ void TitleScene::Update()
 	titleObject_->Update();
 
 	if (input_->TriggerKey(DIK_A)) {
+		audio_->SoundPlayStop(sceneBGM);
+
 		sceneNo = STAGE;
 	}
 
@@ -48,8 +50,8 @@ void TitleScene::Update()
 	if (Input::GetInsTance()->GetJoystickState(joyState)) {
 
 		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_A)) {
-			sceneNo = STAGE;
 			audio_->SoundPlayStop(sceneBGM);
+			sceneNo = STAGE;
 		}
 
 	}
