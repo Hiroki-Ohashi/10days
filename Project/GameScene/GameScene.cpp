@@ -52,12 +52,15 @@ void GameScene::Update() {
 			ImGui::TreePop();
 		}
 
+
 		if (enemy->GetPos().y <= -10.0f) {
 			audio_->SoundPlayStop(sceneBGM);
 			sceneNo = GAMEOVER;
 			enemy->SetIsDead(true);
 		}
 	}
+
+
 
 	//デスフラグの立った弾を削除
 	enemys_.remove_if([](Enemy* enemy) {

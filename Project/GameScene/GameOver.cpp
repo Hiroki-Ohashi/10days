@@ -39,7 +39,7 @@ void GameOverScene::Initialize()
 	titleTexture = textureManager_->Load("resources/gameOver.png");
 	titleTexture1 = textureManager_->Load("resources/gameOverLog.png");
 
-	sceneBGM = audio_->SoundLoadWave("resources/rpg_village.wav");
+	sceneBGM = audio_->SoundLoadWave("resources/fc.wav");
 	audio_->SoundPlayLoop(sceneBGM);
 
 }
