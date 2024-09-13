@@ -91,4 +91,5 @@ private:
 
 	uint32_t bulletColor[3];
 	uint32_t bulletColorSpare[3];
+	int Count = 0;
 };
