@@ -23,7 +23,9 @@ void GameScene::Initialize() {
 	skydome_ = std::make_unique<Skydome>();
 	skydome_->Initialize();
 
-
+	for (Enemy* enemy : enemys_) {
+		enemy->SetIsDead(true);
+	}
 
 	ClearCount = 0;
 	Interval = 0;
@@ -50,6 +52,7 @@ void GameScene::Update() {
 
 		if (enemy->IsDead() == false && enemy->GetPos().y <= -10.0f) {
 			sceneNo = GAMEOVER;
+			enemy->SetIsDead(true);
 		}
 	}
 
