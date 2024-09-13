@@ -75,6 +75,8 @@ private:
 	std::list<Enemy*> enemys_;
 
 	std::unique_ptr<Stage> stage_;
+
+	std::unique_ptr<Skydome> skydome_;
 private:
 	// 待機タイマー
 	int32_t waitTimer_;

@@ -20,6 +20,9 @@ void GameScene::Initialize() {
 	stage_ = std::make_unique<Stage>();
 	stage_->Initialize();
 
+	skydome_ = std::make_unique<Skydome>();
+	skydome_->Initialize();
+
 	for (Enemy* enemy : enemys_) {
 		enemy->SetIsDead(false);
 	}
@@ -49,6 +52,8 @@ void GameScene::Update() {
 
 void GameScene::Draw()
 {
+	skydome_->Draw(&camera_);
+
 	stage_->Draw(&camera_);
 
 	// 敵キャラの描画

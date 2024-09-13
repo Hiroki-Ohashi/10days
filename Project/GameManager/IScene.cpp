@@ -7,4 +7,4 @@ int IScene::GetSceneNo()
 	return sceneNo;
 }
 
-int IScene::sceneNo = CLEAR;
+int IScene::sceneNo = TITLE;
