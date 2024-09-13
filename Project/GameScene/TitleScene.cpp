@@ -35,8 +35,18 @@ void TitleScene::Update()
 
 	titleObject_->Update();
 
-	if (input_->TriggerKey(DIK_RETURN)) {
+	if (input_->TriggerKey(DIK_A)) {
 		sceneNo = STAGE;
+	}
+
+	XINPUT_STATE joyState;
+
+	if (Input::GetInsTance()->GetJoystickState(joyState)) {
+
+		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_A)) {
+			sceneNo = STAGE;
+		}
+
 	}
 }
 

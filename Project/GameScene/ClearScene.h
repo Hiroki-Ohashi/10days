@@ -27,8 +27,10 @@ private:
 	std::unique_ptr<Skydome> skydome_;
 	std::unique_ptr<Model> titleModel_;
 private:
-	EulerTransform titleTransform = { {10.0f,10.0f,10.0f},{0.0f,0.0f,0.0f},{0.0f,0.0f,15.0f} };
+	EulerTransform titleTransform = { {20.0f,10.0f,10.0f},{0.0f,0.0f,0.0f},{0.0f,3.0f,35.0f} };
 	WorldTransform titleWorldtransform;
 
 	uint32_t titleTexture;
+
+	float speed = 0.05f;
 };

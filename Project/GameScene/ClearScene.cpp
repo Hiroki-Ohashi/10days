@@ -20,6 +20,7 @@ void ClearScene::Initialize()
 
 	titleModel_ = std::make_unique<Model>();
 	titleModel_->Initialize("board.obj", titleTransform);
+	titleModel_->SetLight(false);
 
 	titleWorldtransform.translate = titleTransform.translate;
 	titleWorldtransform.rotate = titleTransform.rotate;
@@ -33,12 +34,39 @@ void ClearScene::Update()
 {
 	camera_.Update();
 
+	if (titleWorldtransform.translate.y < 2.0f) {
+		speed += 0.001f;
+	}
+	else if (titleWorldtransform.translate.y >= 2.0f) {
+		speed -= 0.001f;
+	}
+
+	titleWorldtransform.translate.y += speed;
+
+	titleWorldtransform.UpdateMatrix();
 	titleModel_->SetWorldTransform(titleWorldtransform);
 
-	if (input_->TriggerKey(DIK_RETURN)) {
+	if (input_->TriggerKey(DIK_A)) {
 		sceneNo = TITLE;
 	}
 	
+	XINPUT_STATE joyState;
+
+	if (Input::GetInsTance()->GetJoystickState(joyState)) {
+
+		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_A)) {
+			sceneNo = STAGE;
+		}
+
+	}
+
+	if (ImGui::TreeNode("log")) {
+		ImGui::DragFloat3("Transform", &titleWorldtransform.translate.x, 0.01f);
+		ImGui::DragFloat3("Rotate", &titleWorldtransform.rotate.x, 0.01f);
+		ImGui::DragFloat3("Scale", &titleWorldtransform.scale.x, 0.01f);
+		ImGui::TreePop();
+	}
+
 }
 
 void ClearScene::Draw()

@@ -18,6 +18,8 @@ private:
 	std::unique_ptr<Model> titleModel_3;
 	std::unique_ptr<Model> titleModel_4;
 
+	std::unique_ptr<Model> titleLog;
+
 private:
 	EulerTransform titleTransform_1 = { {3.0f,3.0f,3.0f},{0.0f,0.0f,0.0f},{-15.0f,0.0f,15.0f} };
 	WorldTransform titleWorldtransform_1;
@@ -31,10 +33,15 @@ private:
 	EulerTransform titleTransform_4 = { {3.0f,3.0f,3.0f},{0.0f,0.0f,0.0f},{15.0f,0.0f,15.0f} };
 	WorldTransform titleWorldtransform_4;
 
+	EulerTransform logTransform = { {9.0f,3.0f,3.0f},{0.0f,0.0f,0.0f},{0.2f,9.0f,15.0f} };
+	WorldTransform logWorldtransform;
+
 	uint32_t titleTex1;
 	uint32_t titleTex2;
 	uint32_t titleTex3;
 	uint32_t titleTex4;
+
+	uint32_t logTex;
 
 	float speed1 = 0.05f;
 	float speed2 = 0.05f;

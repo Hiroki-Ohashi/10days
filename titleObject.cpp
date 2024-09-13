@@ -6,6 +6,15 @@ TitleObject::~TitleObject()
 
 void TitleObject::Initialize()
 {
+	titleLog = std::make_unique<Model>();
+	titleLog->Initialize("board.obj", logTransform);
+	titleLog->SetLight(false);
+
+	logWorldtransform.translate = logTransform.translate;
+	logWorldtransform.rotate = logTransform.rotate;
+	logWorldtransform.scale = logTransform.scale;
+	logWorldtransform.UpdateMatrix();
+
 	// 撃
 	titleModel_1 = std::make_unique<Model>();
 	titleModel_1->Initialize("board.obj", titleTransform_1);
@@ -46,6 +55,8 @@ void TitleObject::Initialize()
 	titleTex2 = textureManager_->Load("resources/tui.png");
 	titleTex3 = textureManager_->Load("resources/se.png");
 	titleTex4 = textureManager_->Load("resources/yo.png");
+
+	logTex = textureManager_->Load("resources/titleLog.png");
 }
 
 void TitleObject::Update()
@@ -110,6 +121,9 @@ void TitleObject::Update()
 	titleWorldtransform_4.UpdateMatrix();
 	titleModel_4->SetWorldTransform(titleWorldtransform_4);
 
+	logWorldtransform.UpdateMatrix();
+	titleLog->SetWorldTransform(logWorldtransform);
+
 	if (ImGui::TreeNode("geki")) {
 		ImGui::DragFloat3("Transform", &titleWorldtransform_1.translate.x, 0.01f);
 		ImGui::DragFloat3("Rotate", &titleWorldtransform_1.rotate.x, 0.01f);
@@ -130,6 +144,12 @@ void TitleObject::Update()
 		ImGui::DragFloat3("Rotate", &titleWorldtransform_4.rotate.x, 0.01f);
 		ImGui::TreePop();
 	}
+	if (ImGui::TreeNode("log")) {
+		ImGui::DragFloat3("Transform", &logWorldtransform.translate.x, 0.01f);
+		ImGui::DragFloat3("Rotate", &logWorldtransform.rotate.x, 0.01f);
+		ImGui::DragFloat3("Scale", &logWorldtransform.scale.x, 0.01f);
+		ImGui::TreePop();
+	}
 }
 
 void TitleObject::Draw(Camera* camera_)
@@ -138,4 +158,6 @@ void TitleObject::Draw(Camera* camera_)
 	titleModel_2->Draw(camera_, titleTex2);
 	titleModel_3->Draw(camera_, titleTex3);
 	titleModel_4->Draw(camera_, titleTex4);
+
+	titleLog->Draw(camera_, logTex);
 }
