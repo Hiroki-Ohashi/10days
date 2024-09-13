@@ -23,10 +23,10 @@ void GameScene::Initialize() {
 	skydome_ = std::make_unique<Skydome>();
 	skydome_->Initialize();
 
-	for (Enemy* enemy : enemys_) {
-		enemy->SetIsDead(false);
-	}
 
+
+	ClearCount = 0;
+	Interval = 0;
 }
 
 void GameScene::Update() {
@@ -39,6 +39,8 @@ void GameScene::Update() {
 
 	stage_->Update();
 
+
+
 	for (Enemy* enemy : enemys_) {
 		enemy->Update();
 		if (ImGui::TreeNode("Enemy")) {
@@ -49,7 +51,18 @@ void GameScene::Update() {
 
 	CheckAllCollisions();
 
+	ClearCount++;
+	if (ClearCount >= 1800) {
+		for (Enemy* enemy : enemys_) {
+			enemy->SetIsDead(true);
+		}
+		sceneNo = CLEAR;
+	}
+
 	if (input_->TriggerKey(DIK_RETURN)) {
+		for (Enemy* enemy : enemys_) {
+			enemy->SetIsDead(true);
+		}
 		sceneNo = CLEAR;
 	}
 }
@@ -129,6 +142,18 @@ void GameScene::UpdateEnemyPopCommands()
 	//if (input_->TriggerKey(DIK_A)) {
 		//// 乱数生成器を初期化
 		//EnemySpown({ float(rand() % 86 - 45),float(rand() % 11 + 27),0 });
+
+
+	Interval++;
+	if (Interval >= 120) {
+		// 乱数生成器を初期化
+		EnemySpown({ float(rand() % 45 - 22),float(rand() % 6 + 15) ,10 });
+		srand((unsigned)time(NULL) * 54321);  // 乱数系列を初期化
+
+
+		Interval = 0;
+	}
+
 	if (input_->TriggerKey(DIK_P)) {
 		// 乱数生成器を初期化
 		EnemySpown({ float(rand() % 45 - 22),float(rand() % 6 + 15) ,10 });

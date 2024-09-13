@@ -88,6 +88,8 @@ private:
 
 	int ClearCount = 0;
 
+	int Interval = 0;
+
 	//種類
 	TYPE type_;
 };
