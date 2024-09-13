@@ -25,6 +25,8 @@
 #include <Player/Player.h>
 #include <Enemy/Enemy.h>
 
+
+
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "dxguid.lib")
@@ -42,7 +44,7 @@ public:
 	void Draw() override;
 	// ポストエフェクト
 	void PostDraw() override;
-  
+
 	// 解放
 	void Release();
 
@@ -59,7 +61,7 @@ public:
 	void UpdateEnemyPopCommands();
 
 	void EnemySpown(Vector3 pos);
-	void AddEnemy(std::unique_ptr<Enemy> enemy);
+	void AddEnemy(Enemy* enemy);
 
 private:
 	Camera camera_;
@@ -70,12 +72,9 @@ private:
 	std::unique_ptr<Player> player_;
 
 	// 敵
-	std::list<std::unique_ptr<Enemy>> enemys_;
+	std::list<Enemy*> enemys_;
 
 	std::unique_ptr<Stage> stage_;
-
-	std::unique_ptr<Skydome> skydome_;
-
 private:
 	// 待機タイマー
 	int32_t waitTimer_;
@@ -84,4 +83,7 @@ private:
 
 	// 敵発生コマンド
 	std::stringstream enemyPopCommands;
+
+	//種類
+	int type_;
 };

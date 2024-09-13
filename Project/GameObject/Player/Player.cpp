@@ -21,6 +21,11 @@ void Player::Initialize()
 	worldtransform_.UpdateMatrix();
 
 	playerTex = textureManager_->Load("resources/white.png");
+
+
+
+	//弾の種類
+	type_ = RED;
 }
 
 void Player::Update()
@@ -28,7 +33,7 @@ void Player::Update()
 	if (input_->PushKey(DIK_A)) {
 		worldtransform_.rotate.z += 0.05f;
 	}
-	else if(input_->PushKey(DIK_D))
+	else if (input_->PushKey(DIK_D))
 	{
 		worldtransform_.rotate.z -= 0.05f;
 	}
@@ -56,6 +61,8 @@ void Player::Update()
 	if (ImGui::TreeNode("Player")) {
 		ImGui::DragFloat3("Transform", &worldtransform_.translate.x, 0.01f);
 		ImGui::DragFloat3("Rotate", &worldtransform_.rotate.x, 0.01f);
+		ImGui::DragInt("Type", &type_,1);
+
 		ImGui::TreePop();
 	}
 }
@@ -72,6 +79,23 @@ void Player::Draw(Camera* camera_)
 
 void Player::Attack()
 {
+
+	if (input_->TriggerKey(DIK_RIGHT)) {
+		type_++;
+	}
+
+	if (input_->TriggerKey(DIK_LEFT)) {
+		type_--;
+	}
+
+	if (type_ >= 3) {
+		type_ = 0;
+	}
+	if (type_ <= -1) {
+		type_ = 2;
+	}
+
+
 	if (input_->TriggerKey(DIK_SPACE)) {
 
 		// 弾の速度
@@ -85,8 +109,14 @@ void Player::Attack()
 		velocity.y = Normalize(velocity).y * kBulletSpeed;
 		velocity.z = Normalize(velocity).z * kBulletSpeed;
 
-		// 弾を生成し、初期化
+		// 弾を生成
 		PlayerBullet* newBullet = new PlayerBullet();
+
+		//弾の種類の確定
+		newBullet->SetType(TYPE(type_));
+		//newBullet->SetType(RED);
+		
+		// 初期化
 		newBullet->Initialize(worldtransform_.translate, velocity);
 
 		// 弾を登録
