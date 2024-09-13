@@ -12,7 +12,7 @@ void Stage::Initialize()
 	worldtransform_.translate = transform_.translate;
 	worldtransform_.UpdateMatrix();
 
-	stageTex = textureManager_->Load("resources/uvChecker.png");
+	stageTex = textureManager_->Load("resources/stage.png");
 }
 
 void Stage::Update()
