@@ -74,7 +74,7 @@ private:
 	// 敵
 	std::list<Enemy*> enemys_;
 
-	std::unique_ptr<Sprite> sprite_[3];
+	std::unique_ptr<Sprite> sprite_[4];
 
 	std::unique_ptr<Stage> stage_;
 private:
@@ -90,6 +90,7 @@ private:
 	int type_;
 
 	uint32_t bulletColor[3];
+	int frame;
 	uint32_t bulletColorSpare[3];
 	int Count = 0;
 };

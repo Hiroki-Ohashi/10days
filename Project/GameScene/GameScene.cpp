@@ -32,10 +32,14 @@ void GameScene::Initialize() {
 	sprite_[2]=std::make_unique<Sprite>();
 	sprite_[2]->Initialize({565.0f,285.0f},{128.0f,128.0f},1.0f);
 
+	sprite_[3]=std::make_unique<Sprite>();
+	sprite_[3]->Initialize({529.0f,249.0f},{130.0f,130.0f},1.0f);
+
 
 	bulletColor[0]=textureManager_->Load("resources/color0.png");
 	bulletColor[1]=textureManager_->Load("resources/color1.png");
 	bulletColor[2]=textureManager_->Load("resources/color2.png");
+	frame=textureManager_->Load("resources/frame.png");
 
 	bulletColorSpare[0]=bulletColor[0];
 	bulletColorSpare[1]=bulletColor[1];
@@ -98,6 +102,7 @@ void GameScene::Draw()
 	sprite_[0]->Draw(bulletColor[0]);
 	sprite_[1]->Draw(bulletColor[1]);
 	sprite_[2]->Draw(bulletColor[2]);
+	sprite_[3]->Draw(frame);
 
 	player_->Draw(&camera_);
 
