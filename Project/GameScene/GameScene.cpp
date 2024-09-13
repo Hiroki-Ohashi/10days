@@ -121,6 +121,9 @@ void GameScene::UpdateEnemyPopCommands()
 
 
 	///	真下に落ちるタイプ
+	//if (input_->TriggerKey(DIK_A)) {
+		//// 乱数生成器を初期化
+		//EnemySpown({ float(rand() % 86 - 45),float(rand() % 11 + 27),0 });
 	if (input_->TriggerKey(DIK_P)) {
 		// 乱数生成器を初期化
 		EnemySpown({ float(rand() % 45 - 22),float(rand() % 6 + 15) ,10 });
@@ -141,7 +144,7 @@ void GameScene::EnemySpown(Vector3 pos)
 
 	// 敵キャラの初期化
 	enemy_->Initialize(pos);
-
+	enemy_->SetType(YELLOW);
 
 	AddEnemy(enemy_);
 }
