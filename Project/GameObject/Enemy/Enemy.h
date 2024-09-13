@@ -35,6 +35,6 @@ private:
 	TYPE type_;
 
 	uint32_t enemyTex;
-	
+
 	bool isDead_;
-};
+};	

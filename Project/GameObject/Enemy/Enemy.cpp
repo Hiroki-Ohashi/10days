@@ -14,7 +14,19 @@ void Enemy::Initialize(Vector3 pos)
 
 	isDead_ = false;
 
-	enemyTex = textureManager_->Load("resources/black.png");
+
+	if (type_ == RED) {
+		enemyTex = textureManager_->Load("resources/RED.png");
+	}
+
+	if (type_ == YELLOW) {
+		enemyTex = textureManager_->Load("resources/YELLOW.png");
+	}
+
+	if (type_ == BULL) {
+		enemyTex = textureManager_->Load("resources/BULL.png");
+	}
+
 }
 
 void Enemy::Update()

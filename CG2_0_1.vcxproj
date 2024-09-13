@@ -144,6 +144,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Project\SkyBox\SkyBox.cpp" />
     <ClCompile Include="Project\SkyBox\Skydome.cpp" />
     <ClCompile Include="Project\GameObject\Stage\Stage.cpp" />
+    <ClCompile Include="titleObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Project\GameObject\Enemy\Enemy.h" />
@@ -189,6 +190,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Project\SkyBox\SkyBox.h" />
     <ClInclude Include="Project\SkyBox\Skydome.h" />
     <ClInclude Include="Project\GameObject\Stage\Stage.h" />
+    <ClInclude Include="titleObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="externals\imgui\LICENSE.txt" />

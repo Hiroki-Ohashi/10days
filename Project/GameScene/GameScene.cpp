@@ -1,6 +1,6 @@
 #include "GameScene.h"
 
-GameScene::~GameScene(){
+GameScene::~GameScene() {
 	for (Enemy* enemy : enemys_) {
 		delete enemy;
 	}
@@ -20,13 +20,16 @@ void GameScene::Initialize() {
 	stage_ = std::make_unique<Stage>();
 	stage_->Initialize();
 
+	skydome_ = std::make_unique<Skydome>();
+	skydome_->Initialize();
+
 	for (Enemy* enemy : enemys_) {
 		enemy->SetIsDead(false);
 	}
 
 }
 
-void GameScene::Update(){
+void GameScene::Update() {
 
 	UpdateEnemyPopCommands();
 
@@ -49,6 +52,8 @@ void GameScene::Update(){
 
 void GameScene::Draw()
 {
+	skydome_->Draw(&camera_);
+
 	stage_->Draw(&camera_);
 
 	// 敵キャラの描画
@@ -116,9 +121,12 @@ void GameScene::UpdateEnemyPopCommands()
 
 
 	///	真下に落ちるタイプ
-	if (input_->TriggerKey(DIK_A)) {
+	//if (input_->TriggerKey(DIK_A)) {
+		//// 乱数生成器を初期化
+		//EnemySpown({ float(rand() % 86 - 45),float(rand() % 11 + 27),0 });
+	if (input_->TriggerKey(DIK_P)) {
 		// 乱数生成器を初期化
-		EnemySpown({ float(rand() % 86 - 45),float(rand() % 11 + 27),0 });
+		EnemySpown({ float(rand() % 45 - 22),float(rand() % 6 + 15) ,10 });
 		srand((unsigned)time(NULL) * 54321);  // 乱数系列を初期化
 
 	}
@@ -128,6 +136,12 @@ void GameScene::EnemySpown(Vector3 pos)
 {
 	// 敵キャラの生成
 	Enemy* enemy_ = new Enemy();
+
+	//敵キャラの色の確定
+	enemy_->SetType(TYPE(rand() % 3));
+	srand((unsigned)time(NULL) * 54321);  // 乱数系列を初期化
+	//enemy_->SetType(RED);
+
 	// 敵キャラの初期化
 	enemy_->Initialize(pos);
 	enemy_->SetType(YELLOW);

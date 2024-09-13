@@ -44,7 +44,7 @@ public:
 	void Draw() override;
 	// ポストエフェクト
 	void PostDraw() override;
-  
+
 	// 解放
 	void Release();
 
@@ -75,6 +75,8 @@ private:
 	std::list<Enemy*> enemys_;
 
 	std::unique_ptr<Stage> stage_;
+
+	std::unique_ptr<Skydome> skydome_;
 private:
 	// 待機タイマー
 	int32_t waitTimer_;
@@ -83,4 +85,7 @@ private:
 
 	// 敵発生コマンド
 	std::stringstream enemyPopCommands;
+
+	//種類
+	int type_;
 };

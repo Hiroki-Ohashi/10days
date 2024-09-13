@@ -22,6 +22,7 @@ private:
 	std::unique_ptr<Model> model_;
 	EulerTransform transform;
 	WorldTransform worldtransform_;
+	TextureManager* textureManager_ = TextureManager::GetInstance();
 private:
 	// デスタイマー
 	static const int32_t kLifeTime = 60 * 5;
@@ -33,4 +34,7 @@ private:
 
 	// 速度
 	Vector3 velo;
+
+	uint32_t playerbulletTex;
+
 };

@@ -206,7 +206,6 @@ struct SkinCluster {
 	std::pair<D3D12_CPU_DESCRIPTOR_HANDLE, D3D12_GPU_DESCRIPTOR_HANDLE> paletteSrvHandle;
 };
 
-
 enum TYPE { RED, YELLOW, BULL};
 
 float Dot(const Vector3& v1, const Vector3& v2);

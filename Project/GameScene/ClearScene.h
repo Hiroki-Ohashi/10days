@@ -6,6 +6,7 @@
 #include <PostProcess.h>
 #include <Skydome.h>
 #include <Json.h>
+#include <Stage/Stage.h>
 
 class ClearScene : public IScene {
 public:
@@ -21,4 +22,15 @@ private:
 	TextureManager* textureManager_ = TextureManager::GetInstance();
 
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
+
+	std::unique_ptr<Stage> stage_;
+	std::unique_ptr<Skydome> skydome_;
+	std::unique_ptr<Model> titleModel_;
+private:
+	EulerTransform titleTransform = { {20.0f,10.0f,10.0f},{0.0f,0.0f,0.0f},{0.0f,3.0f,35.0f} };
+	WorldTransform titleWorldtransform;
+
+	uint32_t titleTexture;
+
+	float speed = 0.05f;
 };
