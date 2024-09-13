@@ -21,7 +21,7 @@ void GameManager::Run()
 	CoInitializeEx(0, COINIT_MULTITHREADED);
 
 	winapp = WinApp::GetInsTance();
-	winapp->Initialize(L"撃墜せよ");
+	winapp->Initialize(L"3024_撃墜せよ");
 
 	directX = DirectXCommon::GetInsTance();
 	directX->Initialize();
