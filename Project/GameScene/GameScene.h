@@ -74,6 +74,8 @@ private:
 	// 敵
 	std::list<Enemy*> enemys_;
 
+	std::unique_ptr<Sprite> sprite_[3];
+
 	std::unique_ptr<Stage> stage_;
 private:
 	// 待機タイマー
@@ -86,4 +88,7 @@ private:
 
 	//種類
 	int type_;
+
+	uint32_t bulletColor[3];
+	uint32_t bulletColorSpare[3];
 };

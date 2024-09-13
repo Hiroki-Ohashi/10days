@@ -22,8 +22,6 @@ void Player::Initialize()
 
 	playerTex = textureManager_->Load("resources/white.png");
 
-
-
 	//弾の種類
 	type_ = RED;
 }

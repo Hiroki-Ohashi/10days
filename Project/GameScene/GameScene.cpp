@@ -23,6 +23,23 @@ void GameScene::Initialize() {
 	for (Enemy* enemy : enemys_) {
 		enemy->SetIsDead(false);
 	}
+	sprite_[0]=std::make_unique<Sprite>();
+	sprite_[0]->Initialize({530.0f,250.0f},{128.0f,128.0f},1.0f);
+
+	sprite_[1]=std::make_unique<Sprite>();
+	sprite_[1]->Initialize({495.0f,285.0f},{128.0f,128.0f},1.0f);
+
+	sprite_[2]=std::make_unique<Sprite>();
+	sprite_[2]->Initialize({565.0f,285.0f},{128.0f,128.0f},1.0f);
+
+
+	bulletColor[0]=textureManager_->Load("resources/color0.png");
+	bulletColor[1]=textureManager_->Load("resources/color1.png");
+	bulletColor[2]=textureManager_->Load("resources/color2.png");
+
+	bulletColorSpare[0]=bulletColor[0];
+	bulletColorSpare[1]=bulletColor[1];
+	bulletColorSpare[2]=bulletColor[2];
 
 }
 
@@ -42,6 +59,27 @@ void GameScene::Update() {
 
 	CheckAllCollisions();
 
+	if(player_->GetBulletType()==0)
+	{
+		bulletColor[0]=bulletColorSpare[0];
+		bulletColor[1]=bulletColorSpare[1];
+		bulletColor[2]=bulletColorSpare[2];
+	}
+	else
+	if(player_->GetBulletType()==1)
+	{
+		bulletColor[0]=bulletColorSpare[1];
+		bulletColor[1]=bulletColorSpare[2];
+		bulletColor[2]=bulletColorSpare[0];
+	}
+	else
+	if(player_->GetBulletType()==2)
+	{
+		bulletColor[0]=bulletColorSpare[2];
+		bulletColor[1]=bulletColorSpare[0];
+		bulletColor[2]=bulletColorSpare[1];
+	}
+
 	if (input_->TriggerKey(DIK_RETURN)) {
 		sceneNo = CLEAR;
 	}
@@ -55,6 +93,10 @@ void GameScene::Draw()
 	for (Enemy* enemy : enemys_) {
 		enemy->Draw(&camera_);
 	}
+
+	sprite_[0]->Draw(bulletColor[0]);
+	sprite_[1]->Draw(bulletColor[1]);
+	sprite_[2]->Draw(bulletColor[2]);
 
 	player_->Draw(&camera_);
 }
