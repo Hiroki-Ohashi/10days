@@ -143,14 +143,11 @@ void GameScene::EnemySpown(Vector3 pos)
 	Enemy* enemy_ = new Enemy();
 
 	//敵キャラの色の確定
-	type_ = TYPE(rand() % 3);
-	//enemy_->SetType(TYPE(rand() % 3));
+	enemy_->SetType(TYPE(rand() % 3));
 	srand((unsigned)time(NULL) * 54321);  // 乱数系列を初期化
-	//enemy_->SetType(RED);
 
 	// 敵キャラの初期化
 	enemy_->Initialize(pos);
-	enemy_->SetType(YELLOW);
 
 	AddEnemy(enemy_);
 }

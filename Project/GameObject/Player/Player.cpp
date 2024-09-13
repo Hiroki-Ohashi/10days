@@ -130,8 +130,6 @@ void Player::Attack()
 		
 		// 初期化
 		newBullet->Initialize(worldtransform_.translate, velocity);
-		////弾の種類の確定
-		newBullet->SetType(RED);
 
 		// 弾を登録
 		bullets_.push_back(newBullet);
