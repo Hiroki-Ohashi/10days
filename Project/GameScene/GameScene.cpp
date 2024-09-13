@@ -54,6 +54,33 @@ void GameScene::Initialize() {
 	timeblockWorldtransform.rotate = timeblockTransform.rotate;
 	timeblockWorldtransform.scale = timeblockTransform.scale;
 	timeblockWorldtransform.UpdateMatrix();
+
+
+	sprite_[0] = std::make_unique<Sprite>();
+	sprite_[0]->Initialize({ 530.0f,250.0f }, { 128.0f,128.0f }, 1.0f);
+
+	sprite_[1] = std::make_unique<Sprite>();
+	sprite_[1]->Initialize({ 495.0f,285.0f }, { 128.0f,128.0f }, 1.0f);
+
+	sprite_[2] = std::make_unique<Sprite>();
+	sprite_[2]->Initialize({ 565.0f,285.0f }, { 128.0f,128.0f }, 1.0f);
+
+	sprite_[3] = std::make_unique<Sprite>();
+	sprite_[3]->Initialize({ 529.0f,249.0f }, { 130.0f,130.0f }, 1.0f);
+
+
+	bulletColor[0] = textureManager_->Load("resources/color0.png");
+	bulletColor[1] = textureManager_->Load("resources/color1.png");
+	bulletColor[2] = textureManager_->Load("resources/color2.png");
+	frame = textureManager_->Load("resources/frame.png");
+
+	bulletColorSpare[0] = bulletColor[0];
+	bulletColorSpare[1] = bulletColor[1];
+	bulletColorSpare[2] = bulletColor[2];
+
+	
+
+
 }
 
 void GameScene::Update() {
@@ -110,6 +137,25 @@ void GameScene::Update() {
 
 	CheckAllCollisions();
 
+	if (player_->GetBulletType() == 0)
+	{
+		bulletColor[0] = bulletColorSpare[0];
+		bulletColor[1] = bulletColorSpare[1];
+		bulletColor[2] = bulletColorSpare[2];
+	}
+	else if (player_->GetBulletType() == 1)
+	{
+		bulletColor[0] = bulletColorSpare[1];
+		bulletColor[1] = bulletColorSpare[2];
+		bulletColor[2] = bulletColorSpare[0];
+	}
+	else if (player_->GetBulletType() == 2)
+	{
+		bulletColor[0] = bulletColorSpare[2];
+		bulletColor[1] = bulletColorSpare[0];
+		bulletColor[2] = bulletColorSpare[1];
+	}
+
 	ClearCount++;
 	if (ClearCount >= 1800) {
 		for (Enemy* enemy : enemys_) {
@@ -142,6 +188,12 @@ void GameScene::Draw()
 	timeModel_->Draw(&camera_, timeTexture);
 	timeblockModel_->Draw(&camera_, timeblockTexture);
 	
+	sprite_[0]->Draw(bulletColor[0]);
+	sprite_[1]->Draw(bulletColor[1]);
+	sprite_[2]->Draw(bulletColor[2]);
+	sprite_[3]->Draw(frame);
+
+
 	skydome_->Draw(&camera_);
 
 	stage_->Draw(&camera_);
@@ -152,7 +204,6 @@ void GameScene::Draw()
 	}
 
 	player_->Draw(&camera_);
-
 
 }
 

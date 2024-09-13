@@ -79,6 +79,8 @@ private:
 	WorldTransform timeblockWorldtransform;
 	std::unique_ptr<Model> timeblockModel_;
 
+	std::unique_ptr<Sprite> sprite_[4];
+
 	// プレイヤー
 	std::unique_ptr<Player> player_;
 
@@ -109,4 +111,7 @@ private:
 
 	uint32_t timeblockTexture;
 
+	uint32_t bulletColor[3];
+	int frame;
+	uint32_t bulletColorSpare[3];
 };
