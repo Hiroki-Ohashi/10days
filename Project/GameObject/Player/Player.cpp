@@ -9,10 +9,11 @@ Player::~Player() {
 
 void Player::Initialize()
 {
-	transform_ = { {1.0f,1.0f,1.0f},{0.0f,0.0f,0.0f},{0.0f,-10.0f,10.0f} };
+	transform_ = { {1.5f,1.5f,1.5f},{0.0f,0.0f,0.0f},{0.0f,-9.4f,10.0f} };
+	transform_2 = { {1.5f,1.5f,1.5f},{0.0f,0.0f,0.0f},{0.0f,-9.5f,10.0f} };
 
 	model_ = std::make_unique<Model>();
-	model_->Initialize("cube.obj", transform_);
+	model_->Initialize("player.obj", transform_);
 
 	worldtransform_.Initialize();
 	worldtransform_.scale = transform_.scale;
@@ -20,7 +21,17 @@ void Player::Initialize()
 	worldtransform_.translate = transform_.translate;
 	worldtransform_.UpdateMatrix();
 
+	model_2 = std::make_unique<Model>();
+	model_2->Initialize("dai.obj", transform_);
+
+	worldtransform_2.Initialize();
+	worldtransform_2.scale = transform_2.scale;
+	worldtransform_2.rotate = transform_2.rotate;
+	worldtransform_2.translate = transform_2.translate;
+	worldtransform_2.UpdateMatrix();
+
 	playerTex = textureManager_->Load("resources/white.png");
+	playerTex2 = textureManager_->Load("resources/tya.png");
 
 
 
@@ -54,6 +65,9 @@ void Player::Update()
 	model_->SetWorldTransform(worldtransform_);
 	worldtransform_.UpdateMatrix();
 
+	model_2->SetWorldTransform(worldtransform_2);
+	worldtransform_2.UpdateMatrix();
+
 	// デスフラグの立った弾を排除
 	bullets_.remove_if([](PlayerBullet* bullet) {
 		if (bullet->IsDead()) {
@@ -72,9 +86,9 @@ void Player::Update()
 	}
 
 	if (ImGui::TreeNode("Player")) {
-		ImGui::DragFloat3("Transform", &worldtransform_.translate.x, 0.01f);
-		ImGui::DragFloat3("Rotate", &worldtransform_.rotate.x, 0.01f);
-		ImGui::DragInt("Type", &type_,1);
+		ImGui::DragFloat3("Transform", &worldtransform_2.translate.x, 0.01f);
+		ImGui::DragFloat3("Rotate", &worldtransform_2.rotate.x, 0.01f);
+		//ImGui::DragInt("Type", &type_,1);
 
 		ImGui::TreePop();
 	}
@@ -83,6 +97,7 @@ void Player::Update()
 void Player::Draw(Camera* camera_)
 {
 	model_->Draw(camera_, playerTex);
+	model_2->Draw(camera_, playerTex2);
 
 	// 弾描画
 	for (PlayerBullet* bullet : bullets_) {

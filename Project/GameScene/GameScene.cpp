@@ -48,7 +48,7 @@ void GameScene::Update() {
 			ImGui::TreePop();
 		}
 
-		if (enemy->GetPos().y <= -10.0f) {
+		if (enemy->IsDead() == false && enemy->GetPos().y <= -10.0f) {
 			sceneNo = GAMEOVER;
 		}
 	}
