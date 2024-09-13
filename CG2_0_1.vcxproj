@@ -105,7 +105,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="audio.cpp" />
+    <ClCompile Include="Engine\Audio\audio.cpp" />
     <ClCompile Include="Engine\Manager\Json.cpp" />
     <ClCompile Include="Project\GameScene\GameOver.cpp" />
     <ClCompile Include="Project\GameObject\Enemy\Enemy.cpp" />
@@ -148,7 +148,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="titleObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="audio.h" />
+    <ClInclude Include="Engine\Audio\audio.h" />
     <ClInclude Include="Engine\Manager\Json.h" />
     <ClInclude Include="externals\json\json.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
