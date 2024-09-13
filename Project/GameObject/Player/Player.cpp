@@ -38,6 +38,19 @@ void Player::Update()
 		worldtransform_.rotate.z -= 0.05f;
 	}
 
+	if (Input::GetInsTance()->GetJoystickState(joyState)) {
+
+		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_LEFT_SHOULDER)) {
+			worldtransform_.rotate.z += 0.05f;
+		}
+		
+		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_RIGHT_SHOULDER))
+		{
+			worldtransform_.rotate.z -= 0.05f;
+		}
+
+	}
+
 	model_->SetWorldTransform(worldtransform_);
 	worldtransform_.UpdateMatrix();
 
@@ -95,7 +108,6 @@ void Player::Attack()
 		type_ = 2;
 	}
 
-
 	if (input_->TriggerKey(DIK_SPACE)) {
 
 		// 弾の速度
@@ -118,10 +130,71 @@ void Player::Attack()
 		
 		// 初期化
 		newBullet->Initialize(worldtransform_.translate, velocity);
-		//弾の種類の確定
+		////弾の種類の確定
 		newBullet->SetType(RED);
 
 		// 弾を登録
 		bullets_.push_back(newBullet);
+	}
+
+	static bool bButtonPrevState = false;
+	static bool rightButtonPrevState = false;
+	static bool leftButtonPrevState = false;
+
+	if (Input::GetInsTance()->GetJoystickState(joyState)) {
+		bool rightButtonState = Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_DPAD_RIGHT);
+
+		if (rightButtonState && !rightButtonPrevState) {
+			type_++;
+		}
+		rightButtonPrevState = rightButtonState;  // 前のフレームの状態を保存
+
+		bool leftButtonState = Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_DPAD_LEFT);
+
+		if (leftButtonState && !leftButtonPrevState) {
+			type_--;
+		}
+		leftButtonPrevState = leftButtonState;  // 前のフレームの状態を保存
+
+		if (type_ >= 3) {
+			type_ = 0;
+		}
+		if (type_ <= -1) {
+			type_ = 2;
+		}
+
+		bool bButtonState = Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_B);
+
+		if (bButtonState && !bButtonPrevState) {
+			// ここで弾を発射
+			bButtonPrevState = bButtonState;  // 前のフレームの状態を保存
+			// 弾の速度
+			const float kBulletSpeed = 2.0f;
+			Vector3 velocity(0.0f, kBulletSpeed, 0.0f);
+
+			// 速度ベクトルを自機の向きに併せて回転させる
+			velocity = TransformNormal(velocity, worldtransform_.matWorld);
+
+			velocity.x = Normalize(velocity).x * kBulletSpeed;
+			velocity.y = Normalize(velocity).y * kBulletSpeed;
+			velocity.z = Normalize(velocity).z * kBulletSpeed;
+
+			// 弾を生成
+			PlayerBullet* newBullet = new PlayerBullet();
+
+			//弾の種類の確定
+			newBullet->SetType(TYPE(type_));
+			//newBullet->SetType(RED);
+
+			// 初期化
+			newBullet->Initialize(worldtransform_.translate, velocity);
+			//弾の種類の確定
+			newBullet->SetType(RED);
+
+			// 弾を登録
+			bullets_.push_back(newBullet);
+		}
+
+		bButtonPrevState = bButtonState;  // 前のフレームの状態を保存
 	}
 }

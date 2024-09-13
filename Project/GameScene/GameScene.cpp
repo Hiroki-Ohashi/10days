@@ -41,6 +41,10 @@ void GameScene::Update() {
 
 	for (Enemy* enemy : enemys_) {
 		enemy->Update();
+		if (ImGui::TreeNode("Enemy")) {
+			ImGui::Text("Type : %d", enemy->GetTYPE(), 1);
+			ImGui::TreePop();
+		}
 	}
 
 	CheckAllCollisions();
@@ -101,12 +105,13 @@ void GameScene::CheckAllCollisions()
 
 			float L = (eRadius + pBRadius);
 
-			if (e2pBX + e2pBY + e2pBZ <= L && enemy->GetTYPE() == bullet->GetTYPE()) {
-				// 敵キャラの衝突時コールバックを呼び出す
-				enemy->OnCollision();
-			}
-
 			if (e2pBX + e2pBY + e2pBZ <= L) {
+
+				if (enemy->GetTYPE() == bullet->GetTYPE()) {
+					// 敵キャラの衝突時コールバックを呼び出す
+					enemy->OnCollision();
+				}
+
 				// 自弾の衝突時コールバックを呼び出す
 				bullet->OnCollision();
 			}
@@ -138,7 +143,8 @@ void GameScene::EnemySpown(Vector3 pos)
 	Enemy* enemy_ = new Enemy();
 
 	//敵キャラの色の確定
-	enemy_->SetType(TYPE(rand() % 3));
+	type_ = TYPE(rand() % 3);
+	//enemy_->SetType(TYPE(rand() % 3));
 	srand((unsigned)time(NULL) * 54321);  // 乱数系列を初期化
 	//enemy_->SetType(RED);
 

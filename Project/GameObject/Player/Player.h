@@ -33,6 +33,7 @@ private:
 
 	uint32_t playerbulletTex;
 
+	XINPUT_STATE joyState{};
 
 	//種類
 	int type_;

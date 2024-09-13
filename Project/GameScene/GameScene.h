@@ -87,5 +87,5 @@ private:
 	std::stringstream enemyPopCommands;
 
 	//種類
-	int type_;
+	TYPE type_;
 };
