@@ -23,6 +23,7 @@
 #include <Player/Player.h>
 #include <Stage/Stage.h>
 #include "../../titleObject.h"
+#include "../../Engine/Audio/audio.h"
 
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -43,6 +44,7 @@ public:
 private:
 	Camera camera_;
 	TextureManager* textureManager_ = TextureManager::GetInstance();
+	Audio* audio_ = Audio::GetInstance();
 
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
 
@@ -55,5 +57,5 @@ private:
 	std::unique_ptr<TitleObject> titleObject_;
 
 private:
-
+	uint32_t sceneBGM = 0;
 };

@@ -35,6 +35,9 @@ void GameManager::Run()
 	imgui = ImGuiManeger::GetInstance();
 	imgui->Initialize();
 
+	audio_ = Audio::GetInstance();
+	audio_->Initialize();
+
 	// 各シーンの配列
 	sceneArr_[TITLE] = std::make_unique<TitleScene>();
 	sceneArr_[STAGE] = std::make_unique<GameScene>();

@@ -12,6 +12,7 @@
 #include "ImGuiManeger.h"
 #include "imgui.h"
 #include "Light.h"
+#include "../../Engine/Audio/audio.h"
 
 
 class GameManager {
@@ -30,6 +31,7 @@ private:
 	Input* input = nullptr;
 	ImGuiManeger* imgui = nullptr;
 	Light* light_ = nullptr;
+	Audio* audio_ = nullptr;
 
 
 	// シーンを保持

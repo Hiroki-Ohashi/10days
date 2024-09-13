@@ -8,6 +8,7 @@ void TitleScene::Initialize()
 {
 	camera_.Initialize();
 	textureManager_->Initialize();
+	audio_->Initialize();
 
 	postProcess_ = std::make_unique<PostProcess>();
 	postProcess_->Initialize(NONE);
@@ -24,6 +25,9 @@ void TitleScene::Initialize()
 
 	titleObject_ = std::make_unique<TitleObject>();
 	titleObject_->Initialize();
+
+	sceneBGM = audio_->SoundLoadWave("resources/bgm.wav");
+	audio_->SoundPlayLoop(sceneBGM);
 }
 
 
@@ -45,6 +49,7 @@ void TitleScene::Update()
 
 		if (Input::GetInsTance()->PressedButton(joyState, XINPUT_GAMEPAD_A)) {
 			sceneNo = STAGE;
+			audio_->SoundPlayStop(sceneBGM);
 		}
 
 	}
