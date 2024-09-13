@@ -70,6 +70,15 @@ private:
 	std::unique_ptr<PostProcess> postProcess_ = nullptr;
 	Audio* audio_ = Audio::GetInstance();
 
+	//UI 時間                          scale            rotate           translate
+	EulerTransform timeTransform = { {3.5f,1.1f,1.5f},{0.0f,0.0f,0.0f},{21.0f,12.5f,10.0f} };
+	WorldTransform timeWorldtransform;
+	std::unique_ptr<Model> timeModel_;
+
+	EulerTransform timeblockTransform = { {-6.8f,0.95f,1.5f},{0.0f,0.0f,0.0f},{24.35f,10.45f,10.0f} };
+	WorldTransform timeblockWorldtransform;
+	std::unique_ptr<Model> timeblockModel_;
+
 	// プレイヤー
 	std::unique_ptr<Player> player_;
 
@@ -96,5 +105,8 @@ private:
 	TYPE type_;
 
 	uint32_t sceneBGM = 0;
+	uint32_t timeTexture;
+
+	uint32_t timeblockTexture;
 
 };

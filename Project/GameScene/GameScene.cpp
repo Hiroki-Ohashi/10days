@@ -31,6 +31,29 @@ void GameScene::Initialize() {
 	}
 	ClearCount = 0;
 	Interval = 0;
+
+	//時間のUI
+	timeTexture = textureManager_->Load("resources/4b3u5.png");
+	timeModel_ = std::make_unique<Model>();
+	timeModel_->Initialize("board.obj", timeTransform);
+	timeModel_->SetLight(false);
+
+	timeWorldtransform.translate = timeTransform.translate;
+	timeWorldtransform.rotate = timeTransform.rotate;
+	timeWorldtransform.scale = timeTransform.scale;
+	timeWorldtransform.UpdateMatrix();
+
+
+	timeblockTransform = { {-6.8f,0.95f,1.5f},{0.0f,0.0f,0.0f},{24.35f,10.45f,10.0f} };
+	timeblockTexture = textureManager_->Load("resources/Green.png");
+	timeblockModel_ = std::make_unique<Model>();
+	timeblockModel_->Initialize("board.obj", timeblockTransform);
+	timeblockModel_->SetLight(false);
+
+	timeblockWorldtransform.translate = timeblockTransform.translate;
+	timeblockWorldtransform.rotate = timeblockTransform.rotate;
+	timeblockWorldtransform.scale = timeblockTransform.scale;
+	timeblockWorldtransform.UpdateMatrix();
 }
 
 void GameScene::Update() {
@@ -60,7 +83,20 @@ void GameScene::Update() {
 		}
 	}
 
+	if (ImGui::TreeNode("timeWorldtransform")) {
+		ImGui::DragFloat3("Translate", &timeWorldtransform.translate.x, 0.01f);
+		ImGui::DragFloat3("Rotate", &timeWorldtransform.rotate.x, 0.01f);
+		ImGui::DragFloat3("Scale", &timeWorldtransform.scale.x, 0.01f);
+		ImGui::TreePop();
+	}
 
+	if (ImGui::TreeNode("timeblockWorldtransform")) {
+		ImGui::DragFloat3("Translate", &timeblockWorldtransform.translate.x, 0.01f);
+		ImGui::DragFloat3("Rotate", &timeblockWorldtransform.rotate.x, 0.01f);
+		ImGui::DragFloat3("Scale", &timeblockWorldtransform.scale.x, 0.01f);
+		ImGui::DragInt("time", &ClearCount, 0.01f);
+		ImGui::TreePop();
+	}
 
 	//デスフラグの立った弾を削除
 	enemys_.remove_if([](Enemy* enemy) {
@@ -83,17 +119,29 @@ void GameScene::Update() {
 		sceneNo = CLEAR;
 	}
 
-	if (input_->TriggerKey(DIK_RETURN)) {
+	timeblockWorldtransform.scale.x += 0.0037777777777778f;
+	/*if (input_->TriggerKey(DIK_RETURN)) {
 		for (Enemy* enemy : enemys_) {
 			enemy->SetIsDead(true);
 		}
 		audio_->SoundPlayStop(sceneBGM);
 		sceneNo = CLEAR;
-	}
+	}*/
+
+
+	timeWorldtransform.UpdateMatrix();
+	timeModel_->SetWorldTransform(timeWorldtransform);
+
+	timeblockWorldtransform.UpdateMatrix();
+	timeblockModel_->SetWorldTransform(timeblockWorldtransform);
 }
 
 void GameScene::Draw()
 {
+	//UI
+	timeModel_->Draw(&camera_, timeTexture);
+	timeblockModel_->Draw(&camera_, timeblockTexture);
+	
 	skydome_->Draw(&camera_);
 
 	stage_->Draw(&camera_);
@@ -104,6 +152,8 @@ void GameScene::Draw()
 	}
 
 	player_->Draw(&camera_);
+
+
 }
 
 
@@ -205,5 +255,5 @@ void GameScene::EnemySpown(Vector3 pos)
 void GameScene::AddEnemy(Enemy* enemy)
 {
 	// リストに登録する
-	enemys_.push_back(enemy);
+	//enemys_.push_back(enemy);
 }
