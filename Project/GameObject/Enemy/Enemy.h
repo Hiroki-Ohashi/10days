@@ -19,6 +19,7 @@ public:
 	void SetIsDead(bool isDead) { isDead_ = isDead; }
 
 	bool IsDead() { return isDead_; }
+
 	Vector3 GetPos() { return worldtransform_.translate; }
 
 	//敵弾の種類
